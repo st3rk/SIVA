@@ -10,8 +10,10 @@ require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib index.rb]))
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Record.rb]))
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Workout.rb]))
 
+# directory where the workouts will be saved
 workouts_dir = "~/workout"
 
+workouts_dir = File.expand_path(workouts_dir)
 root = File.expand_path(File.join(File.dirname(__FILE__), %w[..]))
 
 if ((ARGV.length != 1) or (ARGV.length != 2)) and (ARGV[0] !~ /.*\.fit$/)
@@ -30,7 +32,7 @@ else
 
 	# create the working dir
 	ARGV.length == 2 ? (suffix = ARGV[1]) : (suffix = nil)
-	dir = "#{workouts_dir}/#{ARGV[0].gsub(/\.fit$/, "")}_#{suffix}"
+	dir = "#{workouts_dir}/#{File.basename(ARGV[0]).gsub(/\.fit$/, "")}_#{suffix}"
 	abort("The directory #{dir} already exists") if File.exist?(dir)
 	Dir.mkdir(dir)
 
