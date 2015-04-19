@@ -10,7 +10,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib index.rb]))
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Record.rb]))
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Workout.rb]))
 
-workouts_dir = "/home/brice/workout"
+workouts_dir = "~/workout"
 
 root = File.expand_path(File.join(File.dirname(__FILE__), %w[..]))
 
