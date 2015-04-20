@@ -1,6 +1,6 @@
 # SIVA
 
-Because satellites don't just send pink laser beams...
+Because satellites don't only send pink laser beams...
 
 ## Overview
 
