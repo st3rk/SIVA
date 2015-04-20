@@ -1,6 +1,10 @@
 # SIVA
 
+Because satellites don't just send pink laser beams...
+
 ## Overview
+
+SIVA stands for Simple Interface to Visualize your Activities. It's also the French translation of *VALIS*, the title of a Philip K. Dick novel.
 
 This program parses a *.fit file, and outputs a html file. It uses:
 
