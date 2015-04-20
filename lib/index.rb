@@ -48,36 +48,66 @@ def build_page(dir, title)
 
 				plot5 = $.plot($(\"#temperature\"), [temp_array], { series: { lines: { show: true }, color: \"#FF9900\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
 
+				plot6 = $.plot($(\"#stance\"), [stance_array], { series: { lines: { show: true }, color: \"#ADFF2F\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
+
+				plot7 = $.plot($(\"#vertical_osc\"), [vertical_osc_array], { series: { lines: { show: true }, color: \"#FF0080\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
+
 
 				$(\"#speed\").bind(\"plothover\",  function (event, pos, item) {        
 					plot2.setCrosshair({x: pos.x})
 					plot3.setCrosshair({x: pos.x})
 					plot4.setCrosshair({x: pos.x})
 					plot5.setCrosshair({x: pos.x})
+					plot6.setCrosshair({x: pos.x})
+					plot7.setCrosshair({x: pos.x})
 				});
 				$(\"#heart_rate\").bind(\"plothover\",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
 					plot3.setCrosshair({x: pos.x})
 					plot4.setCrosshair({x: pos.x})
 					plot5.setCrosshair({x: pos.x})
+					plot6.setCrosshair({x: pos.x})
+					plot7.setCrosshair({x: pos.x})
 				});
 				$(\"#altitude\").bind(\"plothover\",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
 					plot2.setCrosshair({x: pos.x})
 					plot4.setCrosshair({x: pos.x})
 					plot5.setCrosshair({x: pos.x})
+					plot6.setCrosshair({x: pos.x})
+					plot7.setCrosshair({x: pos.x})
 				});
 				$(\"#cadence\").bind(\"plothover\",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
 					plot2.setCrosshair({x: pos.x})
 					plot3.setCrosshair({x: pos.x})
 					plot5.setCrosshair({x: pos.x})
+					plot6.setCrosshair({x: pos.x})
+					plot7.setCrosshair({x: pos.x})
 				});
 				$(\"#temperature\").bind(\"plothover\",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
 					plot2.setCrosshair({x: pos.x})
 					plot3.setCrosshair({x: pos.x})
 					plot4.setCrosshair({x: pos.x})
+					plot6.setCrosshair({x: pos.x})
+					plot7.setCrosshair({x: pos.x})
+				});
+				$(\"#temperature\").bind(\"plothover\",  function (event, pos, item) {        
+					plot.setCrosshair({x: pos.x})
+					plot2.setCrosshair({x: pos.x})
+					plot3.setCrosshair({x: pos.x})
+					plot4.setCrosshair({x: pos.x})
+					plot5.setCrosshair({x: pos.x})
+					plot7.setCrosshair({x: pos.x})
+				});
+				$(\"#vertical_osc\").bind(\"plothover\",  function (event, pos, item) {        
+					plot.setCrosshair({x: pos.x})
+					plot2.setCrosshair({x: pos.x})
+					plot3.setCrosshair({x: pos.x})
+					plot4.setCrosshair({x: pos.x})
+					plot5.setCrosshair({x: pos.x})
+					plot6.setCrosshair({x: pos.x})
 				});
 			});
 		</script>
@@ -108,17 +138,23 @@ def build_page(dir, title)
 			end_point.addTo(map);
 			L.marker([48.8969655521214, 2.090679919347167], {icon: redIcon}).addTo(map);
 		</script>
-		<div class=\"demo-container\">
+		<div class=\"data-container\">
+		</div>
+		<div class=\"graphe-container\">
 			<h1>Vitesse (km/h)</h1>
-			<div id=\"speed\" class=\"demo-placeholder\"></div>
+			<div id=\"speed\" class=\"graphe-placeholder\"></div>
 			<h1>Cardio (bpm)</h1>
-			<div id=\"heart_rate\" class=\"demo-placeholder\"></div>
+			<div id=\"heart_rate\" class=\"graphe-placeholder\"></div>
 			<h1>Altitude (m)</h1>
-			<div id=\"altitude\" class=\"demo-placeholder\"></div>
+			<div id=\"altitude\" class=\"graphe-placeholder\"></div>
 			<h1>Cadence</h1>
-			<div id=\"cadence\" class=\"demo-placeholder\"></div>
+			<div id=\"cadence\" class=\"graphe-placeholder\"></div>
 			<h1>Température (°C)</h1>
-			<div id=\"temperature\" class=\"demo-placeholder\"></div>
+			<div id=\"temperature\" class=\"graphe-placeholder\"></div>
+			<h1>Stance</h1>
+			<div id=\"stance\" class=\"graphe-placeholder\"></div>
+			<h1>Oscillation Verticale</h1>
+			<div id=\"vertical_osc\" class=\"graphe-placeholder\"></div>
 		</div>
 		</div>
 	</body>
