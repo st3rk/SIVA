@@ -1,12 +1,11 @@
-def build_page(dir)
+def build_page(dir, title)
 	File.open(dir + '/index.html', 'w') do |index|
-	index << "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
-    \"http://www.w3.org/TR/html4/strict.dtd\">
+	index << "<!DOCTYPE html>
+
 <html lang=\"fr\">
   <head>
-
-    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">
-    <title>Traversée de l'Essonne</title>
+    <meta charset=\"UTF-8\">
+    <title>#{title}</title>
 
 		<!--my CSS-->
     <link rel=\"stylesheet\" href=\"../css/style.css\" type=\"text/css\" media=\"all\" />
@@ -32,10 +31,10 @@ def build_page(dir)
 		<!--import flot data-->
 		<script src=\"data_array.js\" type=\"text/javascript\"></script>
 		<!--flot-->
-		<script language=\"javascript\" type=\"text/javascript\" src=\"../js/flot/jquery.js\"></script>
-		<script language=\"javascript\" type=\"text/javascript\" src=\"../js/flot/jquery.flot.js\"></script>
-		<script language=\"javascript\" type=\"text/javascript\" src=\"../js/flot/jquery.flot.time.js\"></script>
-		<script language=\"javascript\" type=\"text/javascript\" src=\"../js/flot/jquery.flot.crosshair.js\"></script>
+		<script type=\"text/javascript\" src=\"../js/flot/jquery.js\"></script>
+		<script type=\"text/javascript\" src=\"../js/flot/jquery.flot.js\"></script>
+		<script type=\"text/javascript\" src=\"../js/flot/jquery.flot.time.js\"></script>
+		<script type=\"text/javascript\" src=\"../js/flot/jquery.flot.crosshair.js\"></script>
 
 		<script type=\"text/javascript\">
 			$(function () {
