@@ -20,7 +20,7 @@ if ((ARGV.length != 1) or (ARGV.length != 2)) and (ARGV[0] !~ /.*\.fit$/)
 	puts "Usage: #{$0} <fit_file>"
 else
 	# ensure the flot files exist
-	abort("Please clone the flot repository:\ncd #{root}/data/js && git clone https://github.com/flot/flot.git") if !(File.exists?("#{root}/data/js/flot"))
+	abort("Please clone the flot repository:\ncd #{root}/data/js && git clone https://github.com/flot/flot.git && cd -") if !(File.exists?("#{root}/data/js/flot"))
 	# ensure destination directory and the mandatory filetree exist
 	if !(File.exists?(workouts_dir))
 		puts "Creating #{workouts_dir}"
