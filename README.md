@@ -40,7 +40,7 @@ Edit the file ~/SIVA/bin/parser.rb, and modify the variable `workouts_dir`, e.g.
 workouts_dir = "~/my_awesome_workout_dir"
 ```
 
-### Usage
+## Usage
 
 ```
 ~/SIVA/bin/parser.rb <fit_file> <suffix>
