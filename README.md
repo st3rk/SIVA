@@ -54,3 +54,7 @@ e.g.
 This will create a directory named `my-file_Paris` in `workouts_dir`, containing all files needed to display the workout.
 
 You can open `workouts_dir/my-file_Paris/index.html` in any modern browser (please avoid IE6).
+
+## Demonstration page
+
+A demonstration page is available [here](http://demo-siva.st3rk.fr/2015-04-19-20-34-29-Course_Aubervilliers/).
