@@ -30,15 +30,19 @@ else
 	FileUtils.copy_entry("#{root}/data/js", "#{workouts_dir}/js") if !(File.exists?("#{workouts_dir}/js"))
 	FileUtils.copy_entry("#{root}/data/images", "#{workouts_dir}/images") if !(File.exists?("#{workouts_dir}/images"))
 
-	# create the working dir
+	# check if a suffix was given as argument
 	ARGV.length == 2 ? (suffix = ARGV[1]) : (suffix = nil)
-        title = "#{File.basename(ARGV[0]).gsub(/\.fit$/, "")}_#{suffix}"
+	
+	# define the page title
+	title = "#{File.basename(ARGV[0]).gsub(/\.fit$/, "")}_#{suffix}"
+
+	# create the working dir
 	dir = "#{workouts_dir}/#{title}"
 	abort("The directory #{dir} already exists") if File.exist?(dir)
 	Dir.mkdir(dir)
 
 	# copy the fit file
-	FileUtils.cp(ARGV[0], "#{dir}/trace.fit")
+	FileUtils.cp(ARGV[0], "#{dir}/")
 
 	# compute
 	workout = Workout.new(ARGV[0])
@@ -48,6 +52,9 @@ else
 	workout.alt_export("#{dir}/data_array.js", 'a')
 	workout.cadence_export("#{dir}/data_array.js", 'a')
 	workout.temp_export("#{dir}/data_array.js", 'a')
+	workout.stance_export("#{dir}/data_array.js", 'a')
+	workout.vertical_osc_export("#{dir}/data_array.js", 'a')
 	build_page(dir, title)
+	puts workout.activity_type
 end
 exit

@@ -2,6 +2,8 @@ class Workout
 	def initialize(file)
 		# Load the .fit file
 		@fit_file = Fit.load_file(ARGV[0])
+		# Parse the activity type in the file name
+		@activity_type = ARGV[0].gsub(/.*-([^1-9]+[^\.]).fit$/, '\1')
 		# Parse the file to define some attributes
 		@records = Array.new
 		@fit_file.records.each do |r|
@@ -63,7 +65,7 @@ class Workout
 		File.open(file, file_param) do |f|
 			f.print "var hr_array = [";
 				@records.each do |r|
-					# if a value was not recorded (=255), set it to 0
+					# set it to 0 if it's not available (=255)
 					if r.hr != 255
 						f.print "[#{r.geojson_timestamp}, #{r.hr}]"
 					else
@@ -106,5 +108,40 @@ class Workout
 				end
 				f.print "];\n"
 		end
+	end
+	def stance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var stance_array = [";
+				@records.each do |r|
+					# Set stance value to 0 if not available
+					if r.stance_time != 65535
+						f.print "[#{r.geojson_timestamp}, #{r.stance_time}]"
+					else
+						f.print "[#{r.geojson_timestamp}, 0]"
+					end
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def vertical_osc_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var vertical_osc_array = [";
+				@records.each do |r|
+					# Set stance value to 0 if not available
+					if r.vertical_osc != 65535
+						f.print "[#{r.geojson_timestamp}, #{r.vertical_osc}]"
+					else
+						f.print "[#{r.geojson_timestamp}, 0]"
+					end
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def activity_type
+		return @activity_type
 	end
 end

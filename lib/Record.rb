@@ -65,4 +65,10 @@ class Record
 	def temp
 		return @temp
 	end
+	def stance_time
+		return @stance_time
+	end
+	def vertical_osc
+		return @vertical_osc
+	end
 end
