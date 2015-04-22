@@ -61,4 +61,4 @@ You can open `workouts_dir/my-file_Paris/index.html` in any modern browser (plea
 
 ## Demonstration page
 
-A demonstration page is available [here](http://demo-siva.st3rk.fr/2015-04-19-20-34-29-Course_Aubervilliers/).
+A demonstration page is available [here](http://demo-siva.st3rk.fr/demo-workout/).
