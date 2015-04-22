@@ -1,6 +1,6 @@
 # SIVA
 
-Because satellites don't only send pink laser beams...
+Satellites may send gps data using pink laser beams...
 
 ## Overview
 
@@ -8,9 +8,13 @@ SIVA stands for Simple Interface to Visualize your Activities. It's also the Fre
 
 This program parses a *.fit file, and outputs a html file. It uses:
 
-* [tjwallace/fit](https://github.com/tjwallace/fit) for parsing
-* [flot/flot](https://github.com/flot/flot) for graphe rendering
-* [Leaflet/Leaflet](https://github.com/Leaflet/Leaflet) for map rendering
+* [fit-parser](https://github.com/tjwallace/fit) ruby gem for parsing
+* [flot](https://github.com/flot/flot) JavaScript library for graphe rendering
+* [Leaflet](https://github.com/Leaflet/Leaflet) JavaScript library for map rendering
+
+## WARNING
+
+SIVA is still a work in progress. Keep a backup of your *.fit files somewhere else if you try this program.
 
 ## Requirement
 
