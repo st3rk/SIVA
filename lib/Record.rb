@@ -57,7 +57,11 @@ class Record
 	end
 	def speed_kph
 		# speed in km/h
-		return (@speed.to_f/1000000.to_f*3600.to_f).round(2)
+		if @speed < 65535
+			return (@speed.to_f/1000000.to_f*3600.to_f).round(2)
+		else
+			return 0
+		end
 	end
 	def cadence
 		return @cadence
@@ -70,5 +74,8 @@ class Record
 	end
 	def vertical_osc
 		return @vertical_osc
+	end
+	def distance
+		return @distance.to_f.round(3)
 	end
 end

@@ -15,6 +15,22 @@ class Workout
 		end
 		# Check if this is a type 4 (activity) file
 		abort("This is not an activity file") if @file_id.type != 4
+		# sum the time of each record
+		# time in ms
+		@total_time = 0
+		@moving_time = 0
+		@records.each_with_index do |r, index|
+			# ignore the first record
+			if index > 0
+				# substract previous record timestamp to current timestamp
+				# to get relative time value
+				@total_time = @total_time + (r.geojson_timestamp - @records[index - 1].geojson_timestamp)
+				# sum to moving time if non-null speed
+				@moving_time = @moving_time + (r.geojson_timestamp - @records[index - 1].geojson_timestamp) if r.speed_kph > 1
+			end
+		end
+		# total distance is stored in the last record
+		@total_distance = @records[-1].distance
 	end
 	def creation_time
 		return @file_id.time
@@ -143,5 +159,16 @@ class Workout
 	end
 	def activity_type
 		return @activity_type
+	end
+	def total_time
+		# return total time in format HH:MM:SS
+		return Time.at(@total_time/1000).utc.strftime("%H:%M:%S")
+	end
+	def moving_time
+		# return moving time in format HH:MM:SS
+		return Time.at(@moving_time/1000).utc.strftime("%H:%M:%S")
+	end
+	def total_distance
+		return (@total_distance / 100000).round(3)
 	end
 end
