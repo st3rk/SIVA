@@ -34,7 +34,11 @@ else
 	ARGV.length == 2 ? (suffix = ARGV[1]) : (suffix = nil)
 	
 	# define the page title
-	title = "#{File.basename(ARGV[0]).gsub(/\.fit$/, "")}_#{suffix}"
+	if suffix == nil
+		title = "#{File.basename(ARGV[0]).gsub(/\.fit$/, "")}"
+	else
+		title = "#{File.basename(ARGV[0]).gsub(/\.fit$/, "")}_#{suffix}"
+	end
 
 	# create the working dir
 	dir = "#{workouts_dir}/#{title}"
