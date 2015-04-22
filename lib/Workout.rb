@@ -47,7 +47,12 @@ class Workout
 			File.open(marker_file, file_param) do |marker|
 				geojson.print "track = [ {\n\t\"type\": \"FeatureCollection\",\n\t\"features\": [\n\t\t{\n\t\t\t\"type\": \"Feature\",\n\t\t\t\"properties\": {\n\t\t\t\t\"time\": \"#{self.creation_time}\"\n\t\t\t},\n\t\t\t\"geometry\": {\n\t\t\t\t\"type\": \"LineString\",\n\t\t\t\t\"coordinates\": ["
 				marker.print "var pos_array = [";
-				@records.each do |r|
+				first_point_index = nil
+				last_point_index = nil
+				@records.each_with_index do |r,index|
+					# find first and last valid gps point index
+					first_point_index = index if first_point_index == nil and r.lng != 179.99999991618097 and r.lat != 179.99999991618097
+					last_point_index = index if r.lng != 179.99999991618097 and r.lat != 179.99999991618097
 					# ignore the point if GPS signal was lost
 					if r.lng != 179.99999991618097 and r.lat != 179.99999991618097
 						geojson.print "\t\t\t\t\t[\n\t\t\t\t\t\t#{r.lng},\n\t\t\t\t\t\t#{r.lat},\n\t\t\t\t\t\t#{r.alt}\t\t\t\t\t]"
@@ -60,8 +65,9 @@ class Workout
 				end
 				geojson.print "\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t]\n} ];\n"
 				marker.print "];\n"
-				marker.print "var start_point = L.marker([#{@records[1].lat}, #{@records[1].lng}]);\n"
-				marker.print "var end_point = L.marker([#{@records[-1].lat}, #{@records[-1].lng}], {icon: redIcon});\n"
+				# write markers for first and last valid gps point
+				marker.print "var start_point = L.marker([#{@records[first_point_index].lat}, #{@records[first_point_index].lng}]);\n"
+				marker.print "var end_point = L.marker([#{@records[last_point_index].lat}, #{@records[last_point_index].lng}], {icon: redIcon});\n"
 			end
 		end
 	end

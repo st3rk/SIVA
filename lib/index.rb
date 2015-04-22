@@ -136,7 +136,6 @@ def build_page(dir, title, workout)
 			map.fitBounds(pos_array);
 			start_point.addTo(map);
 			end_point.addTo(map);
-			L.marker([48.8969655521214, 2.090679919347167], {icon: redIcon}).addTo(map);
 		</script>
 		<div class=\"data-container\">
 			<div class=\"data\">
