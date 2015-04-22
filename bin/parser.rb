@@ -56,6 +56,13 @@ else
 	workout.temp_export("#{dir}/data_array.js", 'a')
 	workout.stance_export("#{dir}/data_array.js", 'a')
 	workout.vertical_osc_export("#{dir}/data_array.js", 'a')
+	workout.speed_distance_export("#{dir}/data_array.js", 'a')
+	workout.hr_distance_export("#{dir}/data_array.js", 'a')
+	workout.alt_distance_export("#{dir}/data_array.js", 'a')
+	workout.cadence_distance_export("#{dir}/data_array.js", 'a')
+	workout.temp_distance_export("#{dir}/data_array.js", 'a')
+	workout.stance_distance_export("#{dir}/data_array.js", 'a')
+	workout.vertical_osc_distance_export("#{dir}/data_array.js", 'a')
 	build_page(dir, title, workout)
 	puts workout.activity_type
 end

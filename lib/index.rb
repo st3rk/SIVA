@@ -37,7 +37,7 @@ def build_page(dir, title, workout)
 		<script type=\"text/javascript\" src=\"../js/flot/jquery.flot.crosshair.js\"></script>
 
 		<script type=\"text/javascript\">
-			$(function () {
+			function time() {
 				plot = $.plot($(\"#speed\"), [speed_array], { series: { lines: { show: true }, color: \"#2a6aff\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
 
 				plot2 = $.plot($(\"#heart_rate\"), [hr_array], { series: { lines: { show: true }, color: \"#FF2A2C\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
@@ -51,7 +51,26 @@ def build_page(dir, title, workout)
 				plot6 = $.plot($(\"#stance\"), [stance_array], { series: { lines: { show: true }, color: \"#ADFF2F\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
 
 				plot7 = $.plot($(\"#vertical_osc\"), [vertical_osc_array], { series: { lines: { show: true }, color: \"#FF0080\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
+			}
 
+			function distance() {
+				plot = $.plot($(\"#speed\"), [speed_distance_array], { series: { lines: { show: true }, color: \"#2a6aff\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false } });
+
+				plot2 = $.plot($(\"#heart_rate\"), [hr_distance_array], { series: { lines: { show: true }, color: \"#FF2A2C\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false } });
+				
+				plot3 = $.plot($(\"#altitude\"), [alt_distance_array], { series: { lines: { show: true }, color: \"#663399\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false } });
+
+				plot4 = $.plot($(\"#cadence\"), [cadence_distance_array], { series: { lines: { show: true }, color: \"#2eef34\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false } });
+
+				plot5 = $.plot($(\"#temperature\"), [temp_distance_array], { series: { lines: { show: true }, color: \"#FF9900\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false } });
+
+				plot6 = $.plot($(\"#stance\"), [stance_distance_array], { series: { lines: { show: true }, color: \"#ADFF2F\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false } });
+
+				plot7 = $.plot($(\"#vertical_osc\"), [vertical_osc_distance_array], { series: { lines: { show: true }, color: \"#FF0080\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false } });
+			}
+			$(function () {
+
+				time()
 
 				$(\"#speed\").bind(\"plothover\",  function (event, pos, item) {        
 					plot2.setCrosshair({x: pos.x})
@@ -167,7 +186,12 @@ def build_page(dir, title, workout)
 				<div class=\"data_value\">#{workout.total_descent} m</div>
 			</div>
 		</div>
+
 		<div class=\"graphe-container\">
+			<div class=\"options-container\">
+				<button onclick=\"time()\">temps (minutes)</button>
+				<button onclick=\"distance()\">distance (km)</button>
+			</div>
 			<h1>Vitesse (km/h)</h1>
 			<div id=\"speed\" class=\"graphe-placeholder\"></div>
 			<h1>Cardio (bpm)</h1>

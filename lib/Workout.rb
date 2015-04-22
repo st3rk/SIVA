@@ -76,7 +76,8 @@ class Workout
 		File.open(file, file_param) do |f|
 			f.print "var speed_array = [";
 				@records.each do |r|
-					f.print "[#{r.geojson_timestamp}, #{r.speed_kph}]"
+					# substract first record timestamp to get relative time
+					f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, #{r.speed_kph}]"
 					f.print "," if r.time != @records[-1].time
 				end
 				f.print "];\n"
@@ -95,9 +96,10 @@ class Workout
 				@records.each do |r|
 					# set it to 0 if it's not available (=255)
 					if r.hr != 255
-						f.print "[#{r.geojson_timestamp}, #{r.hr}]"
+					# substract first record timestamp to get relative time
+						f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, #{r.hr}]"
 					else
-						f.print "[#{r.geojson_timestamp}, 0]"
+						f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, 0]"
 					end
 					f.print "," if r.time != @records[-1].time
 				end
@@ -109,7 +111,8 @@ class Workout
 		File.open(file, file_param) do |f|
 			f.print "var alt_array = [";
 				@records.each do |r|
-					f.print "[#{r.geojson_timestamp}, #{r.alt}]"
+					# substract first record timestamp to get relative time
+					f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, #{r.alt}]"
 					f.print "," if r.time != @records[-1].time
 				end
 				f.print "];\n"
@@ -120,7 +123,8 @@ class Workout
 		File.open(file, file_param) do |f|
 			f.print "var cadence_array = [";
 				@records.each do |r|
-					f.print "[#{r.geojson_timestamp}, #{r.cadence}]"
+					# substract first record timestamp to get relative time
+					f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, #{r.cadence}]"
 					f.print "," if r.time != @records[-1].time
 				end
 				f.print "];\n"
@@ -131,7 +135,8 @@ class Workout
 		File.open(file, file_param) do |f|
 			f.print "var temp_array = [";
 				@records.each do |r|
-					f.print "[#{r.geojson_timestamp}, #{r.temp}]"
+					# substract first record timestamp to get relative time
+					f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, #{r.temp}]"
 					f.print "," if r.time != @records[-1].time
 				end
 				f.print "];\n"
@@ -144,9 +149,10 @@ class Workout
 				@records.each do |r|
 					# Set stance value to 0 if not available
 					if r.stance_time != 65535
-						f.print "[#{r.geojson_timestamp}, #{r.stance_time}]"
+					# substract first record timestamp to get relative time
+						f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, #{r.stance_time}]"
 					else
-						f.print "[#{r.geojson_timestamp}, 0]"
+						f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, 0]"
 					end
 					f.print "," if r.time != @records[-1].time
 				end
@@ -160,9 +166,109 @@ class Workout
 				@records.each do |r|
 					# Set stance value to 0 if not available
 					if r.vertical_osc != 65535
-						f.print "[#{r.geojson_timestamp}, #{r.vertical_osc}]"
+					# substract first record timestamp to get relative time
+						f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, #{r.vertical_osc}]"
 					else
-						f.print "[#{r.geojson_timestamp}, 0]"
+						f.print "[#{r.geojson_timestamp - @records[0].geojson_timestamp}, 0]"
+					end
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def speed_distance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var speed_distance_array = [";
+				@records.each do |r|
+					# substract first record timestamp to get relative time
+					f.print "[#{(r.distance.to_f / 100000).round(3)}, #{r.speed_kph}]"
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def hr_distance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var hr_distance_array = [";
+				@records.each do |r|
+					# set it to 0 if it's not available (=255)
+					if r.hr != 255
+					# substract first record timestamp to get relative time
+						f.print "[#{(r.distance.to_f / 100000).round(3)}, #{r.hr}]"
+					else
+						f.print "[#{(r.distance.to_f / 100000).round(3)}, 0]"
+					end
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def alt_distance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var alt_distance_array = [";
+				@records.each do |r|
+					# substract first record timestamp to get relative time
+					f.print "[#{(r.distance.to_f / 100000).round(3)}, #{r.alt}]"
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def cadence_distance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var cadence_distance_array = [";
+				@records.each do |r|
+					# substract first record timestamp to get relative time
+					f.print "[#{(r.distance.to_f / 100000).round(3)}, #{r.cadence}]"
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def temp_distance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var temp_distance_array = [";
+				@records.each do |r|
+					# substract first record timestamp to get relative time
+					f.print "[#{(r.distance.to_f / 100000).round(3)}, #{r.temp}]"
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def stance_distance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var stance_distance_array = [";
+				@records.each do |r|
+					# Set stance value to 0 if not available
+					if r.stance_time != 65535
+					# substract first record timestamp to get relative time
+						f.print "[#{(r.distance.to_f / 100000).round(3)}, #{r.stance_time}]"
+					else
+						f.print "[#{(r.distance.to_f / 100000).round(3)}, 0]"
+					end
+					f.print "," if r.time != @records[-1].time
+				end
+				f.print "];\n"
+		end
+	end
+	def vertical_osc_distance_export(file,file_param)
+		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
+		File.open(file, file_param) do |f|
+			f.print "var vertical_osc_distance_array = [";
+				@records.each do |r|
+					# Set stance value to 0 if not available
+					if r.vertical_osc != 65535
+					# substract first record timestamp to get relative time
+						f.print "[#{(r.distance.to_f / 100000).round(3)}, #{r.vertical_osc}]"
+					else
+						f.print "[#{(r.distance.to_f / 100000).round(3)}, 0]"
 					end
 					f.print "," if r.time != @records[-1].time
 				end
