@@ -1,4 +1,4 @@
-def build_page(dir, title)
+def build_page(dir, title, workout)
 	File.open(dir + '/index.html', 'w') do |index|
 	index << "<!DOCTYPE html>
 
@@ -139,6 +139,22 @@ def build_page(dir, title)
 			L.marker([48.8969655521214, 2.090679919347167], {icon: redIcon}).addTo(map);
 		</script>
 		<div class=\"data-container\">
+			<div class=\"data\">
+				<div class=\"data_name\">Temps total :</div>
+				<div class=\"data_value\">#{workout.total_time}</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Temps couru :</div>
+				<div class=\"data_value\">#{workout.moving_time}</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Distance totale :</div>
+				<div class=\"data_value\">#{workout.total_distance} km</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Vitesse moy. :</div>
+				<div class=\"data_value\">#{workout.avg_speed} km</div>
+			</div>
 		</div>
 		<div class=\"graphe-container\">
 			<h1>Vitesse (km/h)</h1>

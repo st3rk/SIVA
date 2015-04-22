@@ -75,6 +75,30 @@ input[type=checkbox] {
 	background: #fff;
 }
 
+.data {
+	width: 33%;
+	height: 12.5%;
+	margin: 0 0 0 0;
+}
+
+.data_name{
+  float: left;
+  margin-left: 0;
+  margin-top: auto;
+  margin-right: auto;
+  height: 100%;
+  width: 50%;
+}
+
+.data_value{
+  float: right;
+  margin-right: 0;
+  margin-top: auto;
+  margin-left: auto;
+  height: 100%;
+  width: 30%;
+}
+
 .graphe-container {
 	box-sizing: border-box;
 	width: 850px;

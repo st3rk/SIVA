@@ -171,4 +171,8 @@ class Workout
 	def total_distance
 		return (@total_distance / 100000).round(3)
 	end
+	def avg_speed
+		# return average speed in km/h
+		return ((@total_distance.to_f / 100000) / (@moving_time.to_f / 3600000)).round(2)
+	end
 end

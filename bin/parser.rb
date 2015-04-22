@@ -58,7 +58,7 @@ else
 	workout.temp_export("#{dir}/data_array.js", 'a')
 	workout.stance_export("#{dir}/data_array.js", 'a')
 	workout.vertical_osc_export("#{dir}/data_array.js", 'a')
-	build_page(dir, title)
+	build_page(dir, title, workout)
 	puts workout.activity_type
 end
 exit
