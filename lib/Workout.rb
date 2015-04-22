@@ -1,3 +1,7 @@
+require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Record.rb]))
+require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Session.rb]))
+require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib FileID.rb]))
+
 class Workout
 	def initialize(file)
 		# Load the .fit file
@@ -11,6 +15,8 @@ class Workout
 				@file_id = FileID.new(r.content)
 			elsif r.content.record_type == :record
 				@records << Record.new(r.content)
+			elsif r.content.record_type == :session
+				@session = Session.new(r.content)
 			end
 		end
 		# Check if this is a type 4 (activity) file
@@ -173,6 +179,16 @@ class Workout
 	end
 	def avg_speed
 		# return average speed in km/h
+		return ((@total_distance.to_f / 100000) / (@total_time.to_f / 3600000)).round(2)
+	end
+	def avg_moving_speed
+		# return average speed in km/h
 		return ((@total_distance.to_f / 100000) / (@moving_time.to_f / 3600000)).round(2)
+	end
+	def total_ascent
+		return @session.total_ascent
+	end
+	def total_descent
+		return @session.total_descent
 	end
 end

@@ -153,7 +153,19 @@ def build_page(dir, title, workout)
 			</div>
 			<div class=\"data\">
 				<div class=\"data_name\">Vitesse moy. :</div>
-				<div class=\"data_value\">#{workout.avg_speed} km</div>
+				<div class=\"data_value\">#{workout.avg_speed} km/h</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Vitesse moy. courrue :</div>
+				<div class=\"data_value\">#{workout.avg_moving_speed} km/h</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Dénivelé positif :</div>
+				<div class=\"data_value\">#{workout.total_ascent} m</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Dénivelé négatif :</div>
+				<div class=\"data_value\">#{workout.total_descent} m</div>
 			</div>
 		</div>
 		<div class=\"graphe-container\">

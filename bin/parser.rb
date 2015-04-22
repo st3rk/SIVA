@@ -8,6 +8,7 @@ require 'fileutils'
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib FileID.rb]))
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib index.rb]))
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Record.rb]))
+require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Session.rb]))
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Workout.rb]))
 
 # directory where the workouts will be saved
