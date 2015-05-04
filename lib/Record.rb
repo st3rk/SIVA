@@ -70,8 +70,8 @@ class Record
 		return @temp
 	end
 	def stance_time
-		# stance in ms or maximum 1000ms
-		@stance_time/10 <= 1000 ? (return (@stance_time/10)) : (return 1000)
+		# stance in ms
+		return (@stance_time/10)
 	end
 	def vertical_osc
 		return @vertical_osc

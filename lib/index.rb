@@ -48,7 +48,7 @@ def build_page(dir, title, workout)
 
 				plot5 = $.plot($(\"#temperature\"), [temp_array], { series: { lines: { show: true }, color: \"#FF9900\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
 
-				plot6 = $.plot($(\"#stance\"), [stance_array], { series: { lines: { show: true }, color: \"#ADFF2F\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
+				plot6 = $.plot($(\"#stance\"), [stance_array], { series: { lines: { show: true }, color: \"#ADFF2F\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"}, yaxis:{ max: 800 } });
 
 				plot7 = $.plot($(\"#vertical_osc\"), [vertical_osc_array], { series: { lines: { show: true }, color: \"#FF0080\" }, crosshair: { mode: \"x\" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: \"time\"} });
 			}
