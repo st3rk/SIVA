@@ -25,14 +25,26 @@ class Workout
 		# time in ms
 		@total_time = 0
 		@moving_time = 0
+		@total_hr = 0
+		@total_cadence = 0
+		@total_stance = 0
+		@total_vertical_osc = 0
 		@records.each_with_index do |r, index|
-			# ignore the first record
+			# ignore the first record to compute the relative time
 			if index > 0
 				# substract previous record timestamp to current timestamp
 				# to get relative time value
 				@total_time = @total_time + (r.geojson_timestamp - @records[index - 1].geojson_timestamp)
 				# sum to moving time if non-null speed
 				@moving_time = @moving_time + (r.geojson_timestamp - @records[index - 1].geojson_timestamp) if r.speed_kph > 1
+				# compute total hr
+				@total_hr = @total_hr + (r.hr * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
+				# compute total cadence
+				@total_cadence = @total_cadence + (r.cadence * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
+				# compute total stance
+				@total_stance = @total_stance + (r.stance_time * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
+				# compute total vertical_osc
+				@total_vertical_osc = @total_vertical_osc + (r.vertical_osc * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
 			end
 		end
 		# total distance is stored in the last record
@@ -41,6 +53,7 @@ class Workout
 	def creation_time
 		return @file_id.time
 	end
+	# export the location point in json
 	def track_export(json_file,marker_file,file_param)
 		abort("#{file_param}: should be \"a\" or \"w\"") if ((file_param != 'a') and (file_param != 'w'))
 		File.open(json_file, file_param) do |geojson|
@@ -302,5 +315,21 @@ class Workout
 	end
 	def total_descent
 		return @session.total_descent
+	end
+	def avg_hr
+		# average hr is total hr / time unit
+		return @total_hr / @total_time
+	end
+	def avg_cadence
+		# average cadence is total hr / time unit
+		return @total_cadence / @total_time
+	end
+	def avg_stance
+		# average stance is total hr / time unit
+		return @total_stance / @total_time
+	end
+	def avg_vertical_osc
+		# average vertical_osc is total hr / time unit
+		return @total_vertical_osc / @total_time
 	end
 end

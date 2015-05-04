@@ -112,7 +112,7 @@ def build_page(dir, title, workout)
 					plot6.setCrosshair({x: pos.x})
 					plot7.setCrosshair({x: pos.x})
 				});
-				$(\"#temperature\").bind(\"plothover\",  function (event, pos, item) {        
+				$(\"#stance\").bind(\"plothover\",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
 					plot2.setCrosshair({x: pos.x})
 					plot3.setCrosshair({x: pos.x})
@@ -170,6 +170,8 @@ def build_page(dir, title, workout)
 				<div class=\"data_value\">#{workout.total_distance} km</div>
 			</div>
 			<div class=\"data\">
+			</div>
+			<div class=\"data\">
 				<div class=\"data_name\">Vitesse moy. :</div>
 				<div class=\"data_value\">#{workout.avg_speed} km/h</div>
 			</div>
@@ -185,6 +187,22 @@ def build_page(dir, title, workout)
 				<div class=\"data_name\">Dénivelé négatif :</div>
 				<div class=\"data_value\">#{workout.total_descent} m</div>
 			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">FC moyenne :</div>
+				<div class=\"data_value\">#{workout.avg_hr} bpm</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Cadence moyenne :</div>
+				<div class=\"data_value\">#{workout.avg_cadence} fpm</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">TCS moyen :</div>
+				<div class=\"data_value\">#{workout.avg_stance} ms</div>
+			</div>
+			<div class=\"data\">
+				<div class=\"data_name\">Osc. vert. moyenne :</div>
+				<div class=\"data_value\">#{workout.avg_vertical_osc} mm</div>
+			</div>
 		</div>
 
 		<div class=\"graphe-container\">
@@ -198,13 +216,13 @@ def build_page(dir, title, workout)
 			<div id=\"heart_rate\" class=\"graphe-placeholder\"></div>
 			<h1>Altitude (m)</h1>
 			<div id=\"altitude\" class=\"graphe-placeholder\"></div>
-			<h1>Cadence</h1>
+			<h1>Cadence (fpm)</h1>
 			<div id=\"cadence\" class=\"graphe-placeholder\"></div>
 			<h1>Température (°C)</h1>
 			<div id=\"temperature\" class=\"graphe-placeholder\"></div>
-			<h1>Stance</h1>
+			<h1>Temps de contact au sol (ms)</h1>
 			<div id=\"stance\" class=\"graphe-placeholder\"></div>
-			<h1>Oscillation Verticale</h1>
+			<h1>Oscillation Verticale (mm)</h1>
 			<div id=\"vertical_osc\" class=\"graphe-placeholder\"></div>
 		</div>
 		</div>
