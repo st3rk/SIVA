@@ -156,7 +156,7 @@ def build_page(dir, title, workout)
 			start_point.addTo(map);
 			end_point.addTo(map);
 		</script>
-		<div class=\"data-container\">
+		<div class=\"data-container-summary\">
 			<div class=\"data\">
 				<div class=\"data_name\">Temps total :</div>
 				<div class=\"data_value\">#{workout.total_time}</div>
@@ -169,8 +169,8 @@ def build_page(dir, title, workout)
 				<div class=\"data_name\">Distance totale :</div>
 				<div class=\"data_value\">#{workout.total_distance} km</div>
 			</div>
-			<div class=\"data\">
-			</div>
+		</div>
+		<div class=\"data-container-performance\">
 			<div class=\"data\">
 				<div class=\"data_name\">Vitesse moy. :</div>
 				<div class=\"data_value\">#{workout.avg_speed} km/h</div>
@@ -187,6 +187,8 @@ def build_page(dir, title, workout)
 				<div class=\"data_name\">Dénivelé négatif :</div>
 				<div class=\"data_value\">#{workout.total_descent} m</div>
 			</div>
+		</div>
+		<div class=\"data-container-dynamique\">
 			<div class=\"data\">
 				<div class=\"data_name\">FC moyenne :</div>
 				<div class=\"data_value\">#{workout.avg_hr} bpm</div>
