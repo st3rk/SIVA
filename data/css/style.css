@@ -157,7 +157,7 @@ button:hover, button:focus{
 .graphe-container {
 	box-sizing: border-box;
 	width: 850px;
-	height: 1235px;
+	height: auto;
 	padding: 20px 15px 15px 15px;
 	margin: 15px auto 30px auto;
 	border: 1px solid #ddd;
@@ -175,7 +175,7 @@ button:hover, button:focus{
 
 .graphe-placeholder {
 	width: 100%;
-	height: 14.7%;
+	height: 180px;
 	font-size: 14px;
 	line-height: 1.2em;
 	margin-left: auto;
