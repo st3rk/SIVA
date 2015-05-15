@@ -5,11 +5,11 @@ require 'pp'
 require 'date'
 require 'fit'
 require 'fileutils'
-require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib index.rb]))
+require 'erb'
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Workout.rb]))
 
 # directory where the workouts will be saved
-workouts_dir = "~/workout"
+workouts_dir = "/tmp/workout"
 
 workouts_dir = File.expand_path(workouts_dir)
 root = File.expand_path(File.join(File.dirname(__FILE__), %w[..]))
@@ -63,7 +63,11 @@ else
 	workout.temp_distance_export("#{dir}/data_array.js", 'a')
 	workout.stance_distance_export("#{dir}/data_array.js", 'a')
 	workout.vertical_osc_distance_export("#{dir}/data_array.js", 'a')
-	build_page(dir, title, workout)
+
+	# output index.html
+	index_template = File.open(File.expand_path(File.join(File.dirname(__FILE__), %w[.. data index.html.erb])), 'r').read
+	index_render = ERB.new(index_template)
+	File.open(dir + '/index.html', 'w+') { |file| file.write(index_render.result(binding)) }
 	puts workout.activity_type
 end
 exit
