@@ -195,7 +195,7 @@ def build_page(dir, title, workout)
 			</div>
 			<div class=\"data\">
 				<div class=\"data_name\">Cadence moyenne :</div>
-				<div class=\"data_value\">#{workout.avg_cadence} fpm</div>
+				<div class=\"data_value\">#{workout.avg_cadence} min⁻¹</div>
 			</div>
 			<div class=\"data\">
 				<div class=\"data_name\">TCS moyen :</div>
@@ -218,7 +218,7 @@ def build_page(dir, title, workout)
 			<div id=\"heart_rate\" class=\"graphe-placeholder\"></div>
 			<h1>Altitude (m)</h1>
 			<div id=\"altitude\" class=\"graphe-placeholder\"></div>
-			<h1>Cadence (fpm)</h1>
+			<h1>Cadence (min⁻¹)</h1>
 			<div id=\"cadence\" class=\"graphe-placeholder\"></div>
 			<h1>Température (°C)</h1>
 			<div id=\"temperature\" class=\"graphe-placeholder\"></div>
