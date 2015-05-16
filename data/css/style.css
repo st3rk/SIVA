@@ -87,30 +87,11 @@ button:hover, button:focus{
 	color: #999;
 }
 
-.data-container-summary {
+.data-container {
 	box-sizing: border-box;
+	overflow: hidden;
 	width: 850px;
-	height: 100px;
-	padding: 20px 15px 15px 15px;
-	margin: 15px auto 15px auto;
-	border: 1px solid #ddd;
-	background: #fff;
-}
-
-.data-container-performance {
-	box-sizing: border-box;
-	width: 850px;
-	height: 100px;
-	padding: 20px 15px 15px 15px;
-	margin: 15px auto 15px auto;
-	border: 1px solid #ddd;
-	background: #fff;
-}
-
-.data-container-dynamique {
-	box-sizing: border-box;
-	width: 850px;
-	height: 100px;
+	height: auto;
 	padding: 20px 15px 15px 15px;
 	margin: 15px auto 15px auto;
 	border: 1px solid #ddd;
@@ -120,7 +101,7 @@ button:hover, button:focus{
 .data {
 	float: left;
 	width: 50%;
-	height: 55%;
+	height: 30px;
 	margin: 0 0 0 0;
 }
 
