@@ -87,60 +87,108 @@
 				time()
 
 				$("#speed").bind("plothover",  function (event, pos, item) {        
+<% if workout.avg_hr < 255 %>
 					plot2.setCrosshair({x: pos.x})
+<% end %>
 					plot3.setCrosshair({x: pos.x})
+<% if workout.avg_cadence < 65500 %>
 					plot4.setCrosshair({x: pos.x})
+<% end %>
 					plot5.setCrosshair({x: pos.x})
+<% if workout.avg_stance < 6500 %>
 					plot6.setCrosshair({x: pos.x})
+<% end %>
+<% if workout.avg_vertical_osc < 65500 %>
 					plot7.setCrosshair({x: pos.x})
+<% end %>
 				});
 				$("#heart_rate").bind("plothover",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
 					plot3.setCrosshair({x: pos.x})
+<% if workout.avg_cadence < 65500 %>
 					plot4.setCrosshair({x: pos.x})
+<% end %>
 					plot5.setCrosshair({x: pos.x})
+<% if workout.avg_stance < 6500 %>
 					plot6.setCrosshair({x: pos.x})
+<% end %>
+<% if workout.avg_vertical_osc < 65500 %>
 					plot7.setCrosshair({x: pos.x})
+<% end %>
 				});
 				$("#altitude").bind("plothover",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
+<% if workout.avg_hr < 255 %>
 					plot2.setCrosshair({x: pos.x})
+<% end %>
+<% if workout.avg_cadence < 65500 %>
 					plot4.setCrosshair({x: pos.x})
+<% end %>
 					plot5.setCrosshair({x: pos.x})
+<% if workout.avg_stance < 6500 %>
 					plot6.setCrosshair({x: pos.x})
+<% end %>
+<% if workout.avg_vertical_osc < 65500 %>
 					plot7.setCrosshair({x: pos.x})
+<% end %>
 				});
 				$("#cadence").bind("plothover",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
+<% if workout.avg_hr < 255 %>
 					plot2.setCrosshair({x: pos.x})
+<% end %>
 					plot3.setCrosshair({x: pos.x})
 					plot5.setCrosshair({x: pos.x})
+<% if workout.avg_stance < 6500 %>
 					plot6.setCrosshair({x: pos.x})
+<% end %>
+<% if workout.avg_vertical_osc < 65500 %>
 					plot7.setCrosshair({x: pos.x})
+<% end %>
 				});
 				$("#temperature").bind("plothover",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
+<% if workout.avg_hr < 255 %>
 					plot2.setCrosshair({x: pos.x})
+<% end %>
 					plot3.setCrosshair({x: pos.x})
+<% if workout.avg_cadence < 65500 %>
 					plot4.setCrosshair({x: pos.x})
+<% end %>
+<% if workout.avg_stance < 6500 %>
 					plot6.setCrosshair({x: pos.x})
+<% end %>
+<% if workout.avg_vertical_osc < 65500 %>
 					plot7.setCrosshair({x: pos.x})
+<% end %>
 				});
 				$("#stance").bind("plothover",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
+<% if workout.avg_hr < 255 %>
 					plot2.setCrosshair({x: pos.x})
+<% end %>
 					plot3.setCrosshair({x: pos.x})
+<% if workout.avg_cadence < 65500 %>
 					plot4.setCrosshair({x: pos.x})
+<% end %>
 					plot5.setCrosshair({x: pos.x})
+<% if workout.avg_vertical_osc < 65500 %>
 					plot7.setCrosshair({x: pos.x})
+<% end %>
 				});
 				$("#vertical_osc").bind("plothover",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
+<% if workout.avg_hr < 255 %>
 					plot2.setCrosshair({x: pos.x})
+<% end %>
 					plot3.setCrosshair({x: pos.x})
+<% if workout.avg_cadence < 65500 %>
 					plot4.setCrosshair({x: pos.x})
+<% end %>
 					plot5.setCrosshair({x: pos.x})
+<% if workout.avg_stance < 6500 %>
 					plot6.setCrosshair({x: pos.x})
+<% end %>
 				});
 			});
 		</script>

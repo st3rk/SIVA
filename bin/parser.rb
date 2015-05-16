@@ -9,7 +9,7 @@ require 'erb'
 require File.expand_path(File.join(File.dirname(__FILE__), %w[.. lib Workout.rb]))
 
 # directory where the workouts will be saved
-workouts_dir = "/tmp/workout"
+workouts_dir = "~/workout"
 
 workouts_dir = File.expand_path(workouts_dir)
 root = File.expand_path(File.join(File.dirname(__FILE__), %w[..]))
