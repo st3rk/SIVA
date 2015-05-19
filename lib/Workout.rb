@@ -43,7 +43,6 @@ class Workout
 					# if distance was actually not null, fix it and recompute speed
 					if haversine_distance != 0
 						r.set_distance(haversine_distance)
-						puts haversine_distance
 						#speed in m/s
 						r.set_speed(haversine_distance,relative_time)
 					end

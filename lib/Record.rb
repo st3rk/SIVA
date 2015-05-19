@@ -58,11 +58,8 @@ class Record
 	def set_speed(distance,time)
 		# take distance in m, time in ms
 		time_hour = time.to_f / 3600000
-		puts "time_hour: #{time_hour}"
 		distance_km = distance.to_f / 1000
-		puts "distance_km: #{distance_km}"
 		speed_kph = distance_km.to_f / time_hour
-		puts "speed_kph: #{speed_kph}"
 		@speed = speed_kph.to_f*1000000.to_f/3600.to_f
 	end
 	def speed_kph
