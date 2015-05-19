@@ -44,7 +44,7 @@
 
 				plot3 = $.plot($("#altitude"), [alt_array], { series: { lines: { show: true }, color: "#663399" }, crosshair: { mode: "x" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: "time"} });
 
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 				plot4 = $.plot($("#cadence"), [cadence_array], { series: { lines: { show: true }, color: "#2eef34" }, crosshair: { mode: "x" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: "time"} });
 <% end %>
 
@@ -68,7 +68,7 @@
 
 				plot3 = $.plot($("#altitude"), [alt_distance_array], { series: { lines: { show: true }, color: "#663399" }, crosshair: { mode: "x" }, grid: { hoverable: true, autoHighlight: false } });
 
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 				plot4 = $.plot($("#cadence"), [cadence_distance_array], { series: { lines: { show: true }, color: "#2eef34" }, crosshair: { mode: "x" }, grid: { hoverable: true, autoHighlight: false } });
 <% end %>
 
@@ -91,7 +91,7 @@
 					plot2.setCrosshair({x: pos.x})
 <% end %>
 					plot3.setCrosshair({x: pos.x})
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 					plot4.setCrosshair({x: pos.x})
 <% end %>
 					plot5.setCrosshair({x: pos.x})
@@ -105,7 +105,7 @@
 				$("#heart_rate").bind("plothover",  function (event, pos, item) {        
 					plot.setCrosshair({x: pos.x})
 					plot3.setCrosshair({x: pos.x})
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 					plot4.setCrosshair({x: pos.x})
 <% end %>
 					plot5.setCrosshair({x: pos.x})
@@ -121,7 +121,7 @@
 <% if workout.avg_hr < 255 %>
 					plot2.setCrosshair({x: pos.x})
 <% end %>
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 					plot4.setCrosshair({x: pos.x})
 <% end %>
 					plot5.setCrosshair({x: pos.x})
@@ -152,7 +152,7 @@
 					plot2.setCrosshair({x: pos.x})
 <% end %>
 					plot3.setCrosshair({x: pos.x})
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 					plot4.setCrosshair({x: pos.x})
 <% end %>
 <% if workout.avg_stance < 6500 %>
@@ -168,7 +168,7 @@
 					plot2.setCrosshair({x: pos.x})
 <% end %>
 					plot3.setCrosshair({x: pos.x})
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 					plot4.setCrosshair({x: pos.x})
 <% end %>
 					plot5.setCrosshair({x: pos.x})
@@ -182,7 +182,7 @@
 					plot2.setCrosshair({x: pos.x})
 <% end %>
 					plot3.setCrosshair({x: pos.x})
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 					plot4.setCrosshair({x: pos.x})
 <% end %>
 					plot5.setCrosshair({x: pos.x})
@@ -272,9 +272,9 @@
 			</div>
 		</div>
 <% end %>
-<% if workout.avg_cadence < 65500 or workout.avg_stance < 6500 or workout.avg_vertical_osc < 65500 %>
+<% if workout.avg_cadence < 255 or workout.avg_stance < 6500 or workout.avg_vertical_osc < 65500 %>
 		<div class="data-container">
-	<% if workout.avg_cadence < 65500 %>
+	<% if workout.avg_cadence < 255 %>
 			<div class="data">
 				<div class="data_name">Cadence moyenne :</div>
 				<div class="data_value"><%= workout.avg_cadence %> min⁻¹</div>
@@ -308,7 +308,7 @@
 <% end %>
 			<h1>Altitude (m)</h1>
 			<div id="altitude" class="graphe-placeholder"></div>
-<% if workout.avg_cadence < 65500 %>
+<% if workout.avg_cadence < 255 %>
 			<h1>Cadence (min⁻¹)</h1>
 			<div id="cadence" class="graphe-placeholder"></div>
 <% end %>
