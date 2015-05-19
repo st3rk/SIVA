@@ -31,7 +31,6 @@ class Workout
 		@total_vertical_osc = 0
 		@max_speed = 0
 		@max_hr = 0
-		@min_hr = 255
 		@records.each_with_index do |r, index|
 			# ignore the first record to compute the relative time
 			if index > 0
@@ -65,8 +64,6 @@ class Workout
 				@max_speed = r.speed_kph if r.speed_kph > @max_speed
 				# store maximum heart rate
 				@max_hr = r.hr if r.hr > @max_hr and r.hr < 255
-				# store minimum heart rate
-				@min_hr = r.hr if r.hr < @max_hr
 			end
 		end
 		# total distance is stored in the last record
