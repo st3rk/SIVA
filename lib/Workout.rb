@@ -37,17 +37,30 @@ class Workout
 			if index > 0
 				# substract previous record timestamp to current timestamp
 				# to get relative time value
-				@total_time = @total_time + (r.geojson_timestamp - @records[index - 1].geojson_timestamp)
+				relative_time = r.geojson_timestamp - @records[index - 1].geojson_timestamp
+				# if distance is null, but GPS location is valid, try to compute it with Haversine formula
+				if r.distance == 0 and r.lng != 179.99999991618097 and r.lat != 179.99999991618097 and @records[index - 1].lng != 179.99999991618097 and @records[index - 1].lat != 179.99999991618097
+					haversine_distance = self.haversine(@records[index -   1].lat, @records[index -   1].lng, r.lat, r.lng)
+					# if distance was actually not null, fix it and recompute speed
+					if haversine_distance != 0
+						r.set_distance(haversine_distance)
+						puts haversine_distance
+						#speed in m/s
+						r.set_speed(haversine_distance,relative_time)
+					end
+				end
+				# compute total time
+				@total_time = @total_time + relative_time
 				# sum to moving time if non-null speed
-				@moving_time = @moving_time + (r.geojson_timestamp - @records[index - 1].geojson_timestamp) if r.speed_kph > 1
+				@moving_time = @moving_time + relative_time if r.speed_kph > 1
 				# compute total hr
-				@total_hr = @total_hr + (r.hr * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
+				@total_hr = @total_hr + (r.hr * relative_time)
 				# compute total cadence
-				@total_cadence = @total_cadence + (r.cadence * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
+				@total_cadence = @total_cadence + (r.cadence * relative_time)
 				# compute total stance
-				@total_stance = @total_stance + (r.stance_time * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
+				@total_stance = @total_stance + (r.stance_time * relative_time)
 				# compute total vertical_osc
-				@total_vertical_osc = @total_vertical_osc + (r.vertical_osc * (r.geojson_timestamp - @records[index - 1].geojson_timestamp))
+				@total_vertical_osc = @total_vertical_osc + (r.vertical_osc * relative_time)
 				# store maximum speed
 				@max_speed = r.speed_kph if r.speed_kph > @max_speed
 				# store maximum heart rate
@@ -58,6 +71,27 @@ class Workout
 		end
 		# total distance is stored in the last record
 		@total_distance = @records[-1].distance
+		# 
+		@total_distance = @records[-1].distance
+	end
+	# The Haversine formula used to compute the distance between two points
+	def haversine(lat1, long1, lat2, long2)
+		dtor = Math::PI/180
+		r = 6378.14*1000
+		
+		rlat1 = lat1 * dtor
+		rlong1 = long1 * dtor
+		rlat2 = lat2 * dtor
+		rlong2 = long2 * dtor
+		
+		dlon = rlong1 - rlong2
+		dlat = rlat1 - rlat2
+		
+		a = ((Math::sin(dlat/2)) ** 2) + Math::cos(rlat1) * Math::cos(rlat2) * ((Math::sin(dlon/2)) ** 2)
+		c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1-a))
+		d = r * c
+		
+		return d
 	end
 	def creation_time
 		return @file_id.time

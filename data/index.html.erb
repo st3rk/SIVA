@@ -36,7 +36,7 @@
 
 		<script type="text/javascript">
 			function time() {
-				plot = $.plot($("#speed"), [speed_array], { series: { lines: { show: true }, color: "#2a6aff" }, crosshair: { mode: "x" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: "time"} });
+				plot = $.plot($("#speed"), [speed_array], { series: { lines: { show: true }, color: "#2a6aff" }, crosshair: { mode: "x" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: "time"}<% if workout.max_speed > 3 * workout.avg_speed %>, yaxis:{ max: <%= 3 * workout.avg_speed %> }<% end %> });
 
 <% if workout.avg_hr < 255 %>
 				plot2 = $.plot($("#heart_rate"), [hr_array], { series: { lines: { show: true }, color: "#FF2A2C" }, crosshair: { mode: "x" }, grid: { hoverable: true, autoHighlight: false }, xaxis:{ mode: "time"} });

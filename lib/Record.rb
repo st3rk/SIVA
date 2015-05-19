@@ -52,8 +52,18 @@ class Record
 		return @hr
 	end
 	def speed
-		# speed in mm/s
+		# speed in cm/s
 		return @speed
+	end
+	def set_speed(distance,time)
+		# take distance in m, time in ms
+		time_hour = time.to_f / 3600000
+		puts "time_hour: #{time_hour}"
+		distance_km = distance.to_f / 1000
+		puts "distance_km: #{distance_km}"
+		speed_kph = distance_km.to_f / time_hour
+		puts "speed_kph: #{speed_kph}"
+		@speed = speed_kph.to_f*1000000.to_f/3600.to_f
 	end
 	def speed_kph
 		# speed in km/h
@@ -78,5 +88,9 @@ class Record
 	end
 	def distance
 		return @distance.to_f.round(3)
+	end
+	def set_distance(distance)
+		# take ditance in metre and store it in mm
+		@distance = distance * 100000
 	end
 end
