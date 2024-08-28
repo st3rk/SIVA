@@ -28,7 +28,7 @@ SIVA is still a work in progress. Keep a backup of your *.fit files somewhere el
 
 Clone the SIVA repository:
 ```
-$ cd ~ && git clone https://github.com/Leaflet/Leaflet.git
+$ cd ~ && git clone https://github.com/st3rk/SIVA.git
 ```
 
 Clone the flot repository:
